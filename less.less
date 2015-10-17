@@ -1,0 +1,151 @@
+@import (css) "animations.css";
+
+
+
+input {
+}
+
+body {
+    background-image:url("background.png");
+    background-repeat:no-repeat;
+    width:768px;
+    height:494px;
+}
+input.fight {
+    display:block;
+    width:0px;
+    height:0px;
+    text-indent:-9999px;
+    &:after{
+        cursor:pointer;
+        height:122px;
+        width:250px;
+        content:"Fight!";
+        background-image:url("Fight!.png");
+        background-repeat:no-repeat;
+        background-size:100%;
+        display:block;
+        text-align:center;
+        font-size:15px;
+        position:absolute;
+        top:500px;
+        left:275px;
+        opacity:1;
+    }
+
+    &:not(:checked) {
+        &:after{ 
+      -webkit-animation: fight_idle 1s infinite; /* Safari 4+ */
+      -moz-animation:    fight_idle 1s infinite; /* Fx 5+ */
+      -o-animation:      fight_idle 1s infinite; /* Opera 12+ */
+      animation:         fight_idle 1s infinite; /* IE 10+, Fx 29+ */
+        }
+        &:before{
+            height: 122px;
+            width: 250px;
+            content: " ";
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            top: 525px;
+            -webkit-transform: rotateX(-75deg);
+            left: 270px;
+            opacity: 1;
+          -webkit-animation: fight_idle_shadow 1s infinite; /* Safari 4+ */
+          -moz-animation:    fight_idle_shadow 1s infinite; /* Fx 5+ */
+          -o-animation:      fight_idle_shadow 1s infinite; /* Opera 12+ */
+          animation:         fight_idle_shadow 1s infinite; /* IE 10+, Fx 29+ */
+        }
+    }
+
+    &:checked {
+        &:after{ 
+          -webkit-animation: fight_start 1s 1; /* Safari 4+ */
+          -moz-animation:    fight_start 1s 1; /* Fx 5+ */
+          -o-animation:      fight_start 1s 1; /* Opera 12+ */
+          animation:         fight_start 1s 1; /* IE 10+, Fx 29+ */
+          opacity:0;
+        }
+        &:before {
+            height: 122px;
+            width: 250px;
+            content: " ";
+            display: block;
+            border-radius: 50%;
+            position: absolute;
+            top: 525px;
+            -webkit-transform: rotateX(-75deg);
+            left: 270px;
+          -webkit-animation: fight_start_shadow 0.7s 1; /* Safari 4+ */
+          -moz-animation:    fight_start_shadow 0.7s 1; /* Fx 5+ */
+          -o-animation:      fight_start_shadow 0.7s 1; /* Opera 12+ */
+          animation:         fight_start_shadow 0.7s 1; /* IE 10+, Fx 29+ */
+          -webkit-box-shadow: 0px 235px 28px -65px rgba(0, 0, 0, 0.65);
+          -moz-box-shadow: 0px 235px 28px -65px rgba(0, 0, 0, 0.65);
+          -o-box-shadow: 0px 235px 28px -65px rgba(0, 0, 0, 0.65);
+          box-shadow: 0px 235px 28px -65px rgba(0, 0, 0, 0.65);
+        }
+    }
+
+    &:hover:after{
+        background-image:url("Fight!hover.png");
+    }
+
+    + .buttons input {
+        &.rock{
+            width:0px;
+            height:0px;
+            &:after {
+                padding-top:50px;
+                box-sizing:border-box;
+                width:50px;
+                height:50px;
+                content:"Rock";
+                display:block;
+                position:absolute;
+                text-align:center;
+                border-radius:50%;
+                background-color:#ccc;
+            }
+        }
+    }
+}
+
+
+
+
+
+input.fight:checked + .buttons {
+    input:not(:checked) {
+        display:none;
+    }
+    
+    .rock:checked + input + input + .p2Container {
+        input:checked:after{
+            content:"Fight!";
+            display:block;
+            position:relative;
+            top:0px;
+            left:0px;
+            right:0px;
+            font-size:15px;
+            text-align:center;
+            background-color:white;
+            width:100%;
+            height:100%;
+        }
+        .rock {
+            //draw
+            display:none;
+        }
+        .scissors {
+            //win
+            background-color:green;
+        }
+        .paper {
+            //lose
+            background-color:red;
+        }
+    }
+
+}
