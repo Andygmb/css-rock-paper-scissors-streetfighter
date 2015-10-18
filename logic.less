@@ -1,0 +1,100 @@
+.title {
+    width:300px; 
+    height:150px; 
+    background-color:transparent;
+    color:white;
+    font-size:30px;
+    text-indent:0px;
+    text-shadow: -2px 3px 6px #000;
+    right:25px;
+    transform:translateX(-200px) translateY(-150px) rotateZ(0deg) rotateY(0deg) rotateX(0deg);
+}
+
+input.fight:checked + .buttons {
+    input:not(:checked) {
+        display:none;
+    }
+    
+    // P1 picks rock
+    .rock:checked + input + input + .p2Container {
+        input:checked:after{
+        }
+        .rock:before {
+            //draw
+            content:"Draw!" !important;
+            background-image:url("rock.png");
+            .title
+        }
+        .scissors:before {
+            //win
+            content:"Player One wins!" !important;
+            background-color:green;
+            background-image:url("scissors.png");
+            .title
+        }
+        .paper:before {
+            //lose
+            content:"Player Two wins!" !important;
+            background-color:red;
+            background-image:url("paper.png");
+            .title
+        }
+    }
+
+
+    // P1 picks scissors
+    .scissors:checked + .p2Container {
+        input:checked:after{
+        }
+        .rock:before {
+            //lose
+            content:"Player Two wins!" !important;
+            background-color:red;
+            background-image:url("rock.png");
+            .title
+        }
+        .scissors:before {
+            //draw
+            content:"Draw!"!important;
+            background-image:url("scissors.png");
+            .title
+        }
+        .paper:before {
+            //win
+            content:"Player One wins!"!important;
+            background-color:green;
+            background-image:url("paper.png");
+            .title
+
+        }
+    }
+
+
+    // P1 picks paper
+    .paper:checked + input + .p2Container {
+        input:checked:after{
+        }
+        .rock:before {
+            //win
+            content:"Player One wins!"!important;
+            background-color:green;
+            background-image:url("rock.png");
+            .title
+        }
+        .scissors:before {
+            //lose
+            content:"Player Two wins!"!important;
+            background-color:red;
+            background-image:url("scissors.png");
+            .title
+        }
+        .paper:before {
+            //draw
+            content:"Draw!"!important;
+            background-image:url("paper.png");
+            .title
+
+        }
+    }
+
+}
